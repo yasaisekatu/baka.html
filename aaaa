@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おバカ診断ゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>おバカ診断ゲーム</h1>
+    <p id="question">ここに問題が表示されます</p>
+    <input type="text" id="answer" placeholder="答えを入力">
+    <button onclick="checkAnswer()">送信</button>
+    <p id="result"></p>
+
+    <script>
+        const questions = [
+            "5秒以内に3+4を計算しろ！",
+            "犬の鳴き声は？",
+            "2の次の数字は？",
+            "空は何色？"
+        ];
+
+        const bakaTypes = [
+            "天才バカ", "純粋バカ", "筋肉バカ", "お調子者バカ", "計算バカ", "ギャグバカ"
+        ];
+        
+        function getRandomQuestion() {
+            const question = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById("question").innerText = question;
+            document.getElementById("answer").value = "";
+            document.getElementById("result").innerText = "";
+        }
+        
+        function checkAnswer() {
+            const bakaType = bakaTypes[Math.floor(Math.random() * bakaTypes.length)];
+            const bakaPercent = Math.floor(Math.random() * 101); // 0-100%
+            document.getElementById("result").innerText = `あなたは${bakaType}！ バカ度: ${bakaPercent}%`;
+        }
+        
+        getRandomQuestion();
+    </script>
+</body>
+</html>
